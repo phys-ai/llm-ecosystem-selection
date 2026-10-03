@@ -22,12 +22,7 @@ then take about two minutes.
 ## Reproduce
 
 ```bash
-pip install -r requirements.txt
-bash run_all.sh                 # = the three lines below (~2 min, needs data/)
-python3 figures.py all          # figures  -> figures/
-python3 tables.py all           # derived tables -> data/outputs/
-python3 check.py                # every number quoted in the paper, next to the file it is read from
+pip install -r requirements.txt && bash run_all.sh   # figures/, data/outputs/, and every quoted number (~2 min, needs data/)
 ```
 
-To rebuild `data/` from the raw logs (Zenodo), follow `pipeline/README.md`: `collect/` (the LLM runs, already done),
-`replay/` (replay grids and local-stability audit), `early_warning/`, `fragility/`, `appendix_figures.py`.
+To rebuild `data/` from the raw logs (Zenodo), follow `pipeline/README.md`.
