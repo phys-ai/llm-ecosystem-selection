@@ -1,0 +1,156 @@
+[
+  {
+    "label": "nosup_eta0.3_alpha0.3",
+    "eta": 0.3,
+    "alpha": 0.3,
+    "beta_sup": 0.0,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  },
+  {
+    "label": "nosup_eta0.8_alpha0.3",
+    "eta": 0.8,
+    "alpha": 0.3,
+    "beta_sup": 0.0,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  },
+  {
+    "label": "nosup_eta1.5_alpha0.3",
+    "eta": 1.5,
+    "alpha": 0.3,
+    "beta_sup": 0.0,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  },
+  {
+    "label": "nosup_eta3.0_alpha0.3",
+    "eta": 3.0,
+    "alpha": 0.3,
+    "beta_sup": 0.0,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  },
+  {
+    "label": "nosup_eta0.3_alpha1.0",
+    "eta": 0.3,
+    "alpha": 1.0,
+    "beta_sup": 0.0,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  },
+  {
+    "label": "nosup_eta0.8_alpha1.0",
+    "eta": 0.8,
+    "alpha": 1.0,
+    "beta_sup": 0.0,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  },
+  {
+    "label": "nosup_eta1.5_alpha1.0",
+    "eta": 1.5,
+    "alpha": 1.0,
+    "beta_sup": 0.0,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  },
+  {
+    "label": "nosup_eta3.0_alpha1.0",
+    "eta": 3.0,
+    "alpha": 1.0,
+    "beta_sup": 0.0,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  },
+  {
+    "label": "sup_eta0.5_beta0.5",
+    "eta": 0.5,
+    "alpha": 1.0,
+    "beta_sup": 0.5,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  },
+  {
+    "label": "sup_eta1.0_beta0.5",
+    "eta": 1.0,
+    "alpha": 1.0,
+    "beta_sup": 0.5,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  },
+  {
+    "label": "sup_eta1.5_beta0.5",
+    "eta": 1.5,
+    "alpha": 1.0,
+    "beta_sup": 0.5,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  },
+  {
+    "label": "sup_eta0.5_beta1.5",
+    "eta": 0.5,
+    "alpha": 1.0,
+    "beta_sup": 1.5,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  },
+  {
+    "label": "sup_eta1.0_beta1.5",
+    "eta": 1.0,
+    "alpha": 1.0,
+    "beta_sup": 1.5,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  },
+  {
+    "label": "sup_eta1.5_beta1.5",
+    "eta": 1.5,
+    "alpha": 1.0,
+    "beta_sup": 1.5,
+    "beta_route": 2.0,
+    "lambda_risk": 0.0,
+    "context_trait_strength": 1.0,
+    "route_power": 1.5,
+    "route_zscore": true
+  }
+]

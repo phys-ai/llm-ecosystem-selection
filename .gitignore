@@ -1,0 +1,15 @@
+# raw logs (Zenodo), symlinked or extracted next to the package
+runs
+runs/
+runs_testbed_*
+pipeline/collect/runs
+# analysis outputs (data.tar.gz in the Zenodo record), extracted here
+data/
+# written by figures.py
+figures/
+# caches and build products
+.cache/
+__pycache__/
+*.pyc
+*_preview.png
+.DS_Store

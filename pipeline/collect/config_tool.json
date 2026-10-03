@@ -1,0 +1,69 @@
+{
+  "description": "Non-social testbed: a balanced 100-task pinned BFCL v4 subset crossed with 96 Latin-hypercube four-dimensional tool-policy profiles.",
+  "command_template": "python3 ai_tool_log_collect.py --config_json @supplementary_code/configs/log_collection_tool_4d.json --population_seed ${pop_seed} --output runs_tool/run_popseed_${pop_seed}.json --checkpoint_dir runs_tool/run_popseed_${pop_seed}.checkpoints",
+  "config_json": {
+    "model": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini"
+    },
+    "subset_path": "benchmarks/bfcl/tasks.jsonl",
+    "n_tasks": 100,
+    "task_sample_seed": 42,
+    "random_seed": 42,
+    "run_label": "tool_bfcl_popseed_11",
+    "temperature": 0.7,
+    "max_completion_tokens": 512,
+    "api_max_workers": 4,
+    "api_timeout_sec": 120,
+    "api_max_retries": 4,
+    "parallel_tool_calls": true,
+    "save_prompt": true,
+    "save_raw_response": true,
+    "trait_space": {
+      "dimensions": [
+        {
+          "name": "action_propensity",
+          "min": -1.0,
+          "max": 1.0,
+          "prompt_negative": "use a high action threshold: abstain rather than call a tool when the request is irrelevant or materially underspecified",
+          "prompt_positive": "use a low action threshold: call an applicable tool whenever the user's likely requested action is sufficiently clear"
+        },
+        {
+          "name": "intent_interpretation",
+          "min": -1.0,
+          "max": 1.0,
+          "prompt_negative": "interpret requests literally and avoid extending beyond their explicitly stated intent",
+          "prompt_positive": "infer implicit intent from the full request and tool descriptions when the intended operation is reasonably clear"
+        },
+        {
+          "name": "argument_policy",
+          "min": -1.0,
+          "max": 1.0,
+          "prompt_negative": "supply only arguments explicitly supported by the request; do not invent missing values",
+          "prompt_positive": "use schema defaults and strongly implied values when doing so is necessary to complete the requested operation"
+        },
+        {
+          "name": "orchestration_policy",
+          "min": -1.0,
+          "max": 1.0,
+          "prompt_negative": "prefer minimal atomic invocation and avoid unnecessary batching",
+          "prompt_positive": "emit all independent required calls together and use parallel orchestration when the request contains multiple operations"
+        }
+      ],
+      "sampling": {
+        "method": "latin_hypercube",
+        "n_agents": 96,
+        "seed": 11
+      },
+      "discretization": {
+        "enabled": true,
+        "bins": {
+          "action_propensity": [-0.5, 0.5],
+          "intent_interpretation": [-0.5, 0.5],
+          "argument_policy": [-0.5, 0.5],
+          "orchestration_policy": [-0.5, 0.5]
+        }
+      }
+    }
+  }
+}

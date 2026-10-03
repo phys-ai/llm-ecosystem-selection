@@ -1,0 +1,6 @@
+# versions the figures and tables were regenerated with (Python 3.10); newer minor versions should work
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+scikit-learn==1.7.2
+matplotlib==3.10.9
