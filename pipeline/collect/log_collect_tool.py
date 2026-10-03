@@ -974,7 +974,7 @@ class OpenAICompatibleToolClient:
         except ImportError as exc:
             raise RuntimeError(
                 "The openai package is required for live collection. "
-                "Install supplementary_code/requirements.txt or run with --mock_mode."
+                "Install the openai package or run with --mock_mode."
             ) from exc
 
         if provider == "openai":

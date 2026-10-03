@@ -79,7 +79,7 @@ python3 ../pipeline/appendix_figures.py figures          # Figs. 7-10, 13 -> res
 
 Parsed raw logs are cached under `.cache/` (`EVOTHEORY_CACHE` overrides).
 
-## Raw logs (Zenodo: <DOI>)
+## Raw logs (Zenodo: https://doi.org/10.5281/zenodo.23112844)
 
 The Zenodo record holds `data.tar.gz` (the `data/` directory of the package root) and 21 log archives (2.7 GB in all;
 `SHA256SUMS` inside), the latter made by `collect/export_logs.py`:

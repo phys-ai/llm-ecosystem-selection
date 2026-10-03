@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 
 import log_collect_tool as collector
-from analysis.ai_social_experiment_replay import prepare_log_streaming
+from replay.engine import prepare_log_streaming
 
 
 ROOT = Path(__file__).resolve().parents[1]

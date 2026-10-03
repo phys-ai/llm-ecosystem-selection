@@ -8,7 +8,7 @@ import tarfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-MEMBER_DIR = "runs_rebuttal_{name}"  # top-level directory inside each archive (historical name)
+MEMBER_DIR = "runs_testbed_{name}"  # top-level directory inside each archive
 
 
 def archive_path(name: str) -> Path:

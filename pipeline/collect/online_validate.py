@@ -10,7 +10,7 @@ updated again.
 Typical use:
 
   python online_validate.py \
-    --collector_path ai_social_log_collect_fast.py \
+    --collector_path log_collect.py \
     --out_dir results/closed_loop_validation \
     --seeds 42,43,44 \
     --n_timesteps 80 \
@@ -20,7 +20,7 @@ Typical use:
 
 Notes:
   * The script imports data classes, prompt utilities, model wrappers, and topic
-    loading utilities from ai_social_log_collect_fast.py.
+    loading utilities from log_collect.py.
   * It does not import the replay script.  The relevant finite-selection update
     and endpoint diagnostics are implemented locally so this file can be run as a
     lightweight validation harness.
@@ -202,7 +202,7 @@ def import_collector_module(path: str) -> Any:
     collector_path = Path(path)
     if not collector_path.exists():
         raise FileNotFoundError(f"collector_path does not exist: {collector_path}")
-    spec = importlib.util.spec_from_file_location("ai_social_log_collect_fast_imported", str(collector_path))
+    spec = importlib.util.spec_from_file_location("log_collect_imported", str(collector_path))
     if spec is None or spec.loader is None:
         raise ImportError(f"Could not import collector module from {collector_path}")
     module = importlib.util.module_from_spec(spec)
@@ -1746,7 +1746,7 @@ def read_reference_replay_summary(replay_csv: str) -> pd.DataFrame:
     Full-grid replay runs may be left as per-population-seed checkpoint
     directories instead of a single top-level phase_summary.csv.  In that case,
     callers often still point at the intended aggregate path, e.g.
-    analysis/results/fig0_4_full_grid/phase_summary.csv.  Fall back to merging
+    data/results/fig0_4_full_grid/phase_summary.csv.  Fall back to merging
     run_popseed_*.checkpoints/phase_summary.csv under the parent directory.
     """
     path = Path(replay_csv)

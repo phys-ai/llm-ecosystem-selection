@@ -11,11 +11,11 @@ llm-ecosystem-selection/
   data/                  stored analysis outputs the scripts read: data.tar.gz of the Zenodo record, extracted here (manifest below)
   figures/               the PDFs the scripts write (PAPER_DIR=<LaTeX directory> writes into its figures/ instead)
   pipeline/              how data/ was made from the raw logs: collect -> replay -> early_warning / fragility -> appendix figures (pipeline/README.md)
-  runs/, runs_testbed_*/ raw logs of the main population and of the five testbeds (Zenodo: <DOI>; input of pipeline/, not needed for the three commands above)
+  runs/, runs_testbed_*/ raw logs of the main population and of the five testbeds (Zenodo: https://doi.org/10.5281/zenodo.23112844; input of pipeline/, not needed for the three commands above)
 ```
 
 Setup: Python >= 3.10, `pip install -r requirements.txt` (numpy, pandas, scipy, scikit-learn, matplotlib), then `data.tar.gz`
-from the Zenodo record (<DOI>) extracted at the package root (`tar xzf data.tar.gz`, gives `data/`, 0.5 GB).
+from the Zenodo record (https://doi.org/10.5281/zenodo.23112844) extracted at the package root (`tar xzf data.tar.gz`, gives `data/`, 0.5 GB).
 
 ## 1. Figures (`python3 figures.py all`, ~1 min)
 

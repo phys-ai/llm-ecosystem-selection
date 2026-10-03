@@ -7,6 +7,10 @@ authors:
 version: 1.0.0
 date-released: 2026-10-02
 url: "https://openreview.net/forum?id=RM3k5s1pJM"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23112844
+    description: "Zenodo record with data.tar.gz and the raw logs"
 preferred-citation:
   type: conference-paper
   title: "How Selection Shapes Diversity in LLM Ecosystems"
