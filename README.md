@@ -26,3 +26,16 @@ pip install -r requirements.txt && bash run_all.sh   # figures/, data/outputs/, 
 ```
 
 To rebuild `data/` from the raw logs (Zenodo), follow `pipeline/README.md`.
+
+## Citation
+
+```bibtex
+@inproceedings{okawa2026selection,
+  title     = {How Selection Shapes Diversity in {LLM} Ecosystems},
+  author    = {Okawa, Maya},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {39},
+  year      = {2026},
+  url       = {https://openreview.net/forum?id=RM3k5s1pJM}
+}
+```
