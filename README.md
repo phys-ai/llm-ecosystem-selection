@@ -11,7 +11,7 @@ llm-ecosystem-selection/
   data/                  the analysis outputs the three scripts read; not distributed, regenerated from the raw logs by pipeline/
   figures/               the PDFs the scripts write (PAPER_DIR=<LaTeX directory> writes into its figures/ instead)
   pipeline/              how data/ was made from the raw logs: collect -> replay -> early_warning / fragility -> appendix figures (pipeline/README.md)
-  runs/, runs_testbed_*/ raw logs of the main population and of the five testbeds (Zenodo: https://doi.org/10.5281/zenodo.23112844)
+  runs/, runs_testbed_*/ raw logs of the main population and of the testbeds (Zenodo: https://doi.org/10.5281/zenodo.23112844)
 ```
 
 Setup: Python >= 3.10, `pip install -r requirements.txt` (numpy, pandas, scipy, scikit-learn, matplotlib). The raw logs are on
