@@ -8,14 +8,16 @@ llm-ecosystem-selection/
   tables.py              re-derive the quoted numbers from data/        python3 tables.py all | unstable_diversity | evaluator_shift | testbeds | tool | fragility
   check.py               print every number quoted in the paper next to the file it comes from   python3 check.py [--grep tool]
   run_all.sh             the three commands above (~2 min)
-  data/                  stored analysis outputs the scripts read: data.tar.gz of the Zenodo record, extracted here (manifest below)
+  data/                  the analysis outputs the three scripts read; not distributed, regenerated from the raw logs by pipeline/ (manifest below)
   figures/               the PDFs the scripts write (PAPER_DIR=<LaTeX directory> writes into its figures/ instead)
   pipeline/              how data/ was made from the raw logs: collect -> replay -> early_warning / fragility -> appendix figures (pipeline/README.md)
-  runs/, runs_testbed_*/ raw logs of the main population and of the five testbeds (Zenodo: https://doi.org/10.5281/zenodo.23112844; input of pipeline/, not needed for the three commands above)
+  runs/, runs_testbed_*/ raw logs of the main population and of the five testbeds (Zenodo: https://doi.org/10.5281/zenodo.23112844; input of pipeline/)
 ```
 
-Setup: Python >= 3.10, `pip install -r requirements.txt` (numpy, pandas, scipy, scikit-learn, matplotlib), then `data.tar.gz`
-from the Zenodo record (https://doi.org/10.5281/zenodo.23112844) extracted at the package root (`tar xzf data.tar.gz`, gives `data/`, 0.5 GB).
+Setup: Python >= 3.10, `pip install -r requirements.txt` (numpy, pandas, scipy, scikit-learn, matplotlib). The raw logs are on
+Zenodo (https://doi.org/10.5281/zenodo.23112844); `pipeline/README.md` turns them into `data/` (the replay grids take hours on a
+multi-core machine, the early-warning and fragility stages a few hours more; no API access is needed). The three commands above
+then take about two minutes.
 
 ## 1. Figures (`python3 figures.py all`, ~1 min)
 
@@ -60,7 +62,7 @@ The regenerated PDFs are identical to the ones in the paper (byte for byte, or p
 | B.8 tool normalization (78% / 5% of rounds, correlation -1.00, 0.85 vs 0.90) | raw tool logs (`runs_testbed_tool/`, Zenodo) | `check.py` (skipped when the logs are absent) |
 | B.9 online validation: Spearman 0.69 / 0.72 / 0.75 / 0.79 | `results/closed_loop_validation_grid/replay_online_metric_agreement_5seeds.csv` | `pipeline/collect/online_validate.py` |
 
-## 3. Data manifest (`data/`, ~0.5 GB, `data.tar.gz` of the Zenodo record)
+## 3. Data manifest (`data/`, ~0.5 GB once regenerated)
 
 | Folder | Content | Made by |
 |---|---|---|

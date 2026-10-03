@@ -1,0 +1,38 @@
+{
+  "mc": {
+    "n_draws": 40000,
+    "mc_seed": 20260919,
+    "model": "z_i iid N(0,v), p=softmax(z), common random numbers across v"
+  },
+  "levels": {
+    "96": {
+      "v_50": 4.359999999999999,
+      "v_10": 2.235973597359736,
+      "v_90": 9.082812500000001,
+      "v_E_N_eff_at_thr": 4.661887154887972,
+      "v_lognormal": 2.3025850929940455,
+      "neff_thr": 9.600000000000001,
+      "top1_thr": 0.45,
+      "monotone_E_HHI": true
+    },
+    "100": {
+      "v_50": 4.317877094972067,
+      "v_10": 2.2153225806451613,
+      "v_90": 8.794285714285715,
+      "v_E_N_eff_at_thr": 4.582578382054274,
+      "v_lognormal": 2.302585092994046,
+      "neff_thr": 10.0,
+      "top1_thr": 0.45,
+      "monotone_E_HHI": true
+    }
+  },
+  "n_endpoints": 18450,
+  "n_seeds": 10,
+  "misclassified_pred_rule": {
+    "n": 448,
+    "abs_log_dist_median": 0.15164561020217693,
+    "abs_log_dist_q90": 0.47166519858027733,
+    "share_eta_beta_ge_2": 0.13392857142857142
+  },
+  "previous_calibrated_level_v10": 4.8
+}

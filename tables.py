@@ -384,7 +384,8 @@ def main_evaluator_shift():
         ap = argparse.ArgumentParser()
         ap.add_argument("--gpt_root", default=str(ROOT / "data/results"))
         ap.add_argument("--ds_root", default=str(ROOT / "data/results_reuse_clean"))
-        ap.add_argument("--runs_root", default=str(ROOT / "data/agent_metadata"), help="directory holding run_popseed_<s>[...].checkpoints/metadata.json (agent trait coordinates)")
+        ap.add_argument("--runs_root", default=str(ROOT / ("data/agent_metadata" if (ROOT / "data/agent_metadata").is_dir() else "runs")),
+                        help="directory holding run_popseed_<s>[...].checkpoints/metadata.json (the agents' trait coordinates): runs/ or a copy of its metadata files")
         ap.add_argument("--seeds", default="11,22,33,44,55")
         ap.add_argument("--dead_zone", type=float, default=0.02)
         ap.add_argument("--out_dir", default=str(ROOT / "data/outputs/evaluator_trait_shift"))

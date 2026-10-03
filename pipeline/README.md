@@ -1,7 +1,7 @@
 # pipeline/ — how `data/` was produced from the raw logs
 
-Normally not run: `figures.py` and `tables.py` work from the stored `data/`. The stages below recompute `data/` from
-the raw logs, in this order. All commands run from the package root (`llm-ecosystem-selection/`) unless stated; each script
+The stages below compute `data/` (the input of `figures.py`, `tables.py` and `check.py`) from the raw logs of the Zenodo
+record, in this order. All commands run from the package root (`llm-ecosystem-selection/`) unless stated; each script
 prints its options with `--help`.
 
 ```
@@ -35,6 +35,7 @@ sources; `build_topic_bank.py` is the script that built the bank from the Reddit
 | `python3 replay/per_round_vs_average.py` | `data/outputs/per_round_vs_average` (Sec. 4.3, Fig. 4(b), Fig. 11) |
 | `python3 replay/logspace_grids.py replay --grids main_no_support,main_support` then `... adapt` | `data/outputs/replay_logspace_grids`, `replay_logspace_adapted` |
 | `python3 replay/per_round.py main` / `testbeds` | `data/outputs/per_round_stats[_testbeds]` |
+| `python3 replay/engine.py --runs_dir runs/run_popseed_11.checkpoints --etas 0.25,4.0 --alphas 1 --support_strengths 0 --route_strengths 2 --risk_lambdas 0 --route_zscore --endpoint_last_k 100 --save_exposure_snapshots --snapshot_steps $(seq -s, 0 200) --out_dir data/outputs/fig2_exposure_snapshots` | the exposure snapshots of Fig. 2 |
 
 `engine.py` is the replay (`--estimate_stability` adds the local-stability audit: active-face Jacobian and invasion
 multipliers at the time-averaged endpoint); `endpoint.py` replays one stored condition to its endpoint for the fragility scripts;
@@ -45,7 +46,7 @@ multipliers at the time-averaged endpoint); `endpoint.py` replays one stored con
 | Command | Output | Paper |
 |---|---|---|
 | `python3 early_warning/logspace.py features --stage features` then `--stage eval` (~15 min) | `data/outputs/replay_logspace_adapted/G7_early_warning/oof_predictions_T1.csv.gz` | behind Fig. 5 |
-| `python3 early_warning/closed_form.py` | `data/outputs/early_warning_closed_form` (reads `v_50` from the stored `data/outputs/predicted_level/manifest.json`) | Fig. 5, B.3 |
+| `python3 early_warning/closed_form.py` | `data/outputs/early_warning_closed_form` (`v_50` from `early_warning/predicted_level.json`, a Monte Carlo calibration of the concentration threshold) | Fig. 5, B.3 |
 | `python3 early_warning/heldout.py heldout_params` / `heldout_support` / `testbeds` | `data/outputs/early_warning_heldout_params`, `_heldout_support`, `_testbeds` | B.3, B.8 |
 | `python3 early_warning/context.py holdout` / `shift` | `data/outputs/early_warning_context_holdout`, `data/testbeds/context_shift_early_warning_10seed` | B.3 |
 
@@ -81,15 +82,13 @@ Parsed raw logs are cached under `.cache/` (`EVOTHEORY_CACHE` overrides).
 
 ## Raw logs (Zenodo: https://doi.org/10.5281/zenodo.23112844)
 
-The Zenodo record holds `data.tar.gz` (the `data/` directory of the package root) and 21 log archives (2.7 GB in all;
-`SHA256SUMS` inside), the latter made by `collect/export_logs.py`:
+The Zenodo record holds 19 log archives (2.6 GB in all), made by `collect/export_logs.py`:
 
 | Archive | Content | Extract into |
 |---|---|---|
 | `run_popseed_<s>.checkpoints.tar.gz` (10) | main population, one per seed | `runs/` |
 | `run_popseed_<s>_reuse_together_evalaudit_compact.checkpoints.tar.gz` (5) | the same posts re-evaluated by DeepSeek-V3 | `runs/` |
-| `runs_testbed_<name>.tar.gz` (5) | heterogeneity, 8d, 16d, llama, tool testbeds (5 seeds each) | the package root (gives `runs_testbed_<name>/`) |
-| `runs_online.tar.gz` | closed-loop validation | `data/results/closed_loop_validation_grid/checkpoints/` |
+| `runs_testbed_<name>.tar.gz` (4) | heterogeneity, 16d, llama, tool testbeds (5 seeds each) | the package root (gives `runs_testbed_<name>/`) |
 
 Each archive holds `run_popseed_<s>.checkpoints/metadata.json` and one gzipped JSON per timestep; `replay/engine.py` and
 everything built on it read the gzipped files directly.

@@ -13,7 +13,7 @@ orientation, no training, so there is no fold structure):
   (iii) theoretical fluctuation variance eta^2 sigma^2 (1 - lambda^{2t}) / (1 - lambda^2) at t = 20,
         lambda = 1 - eta*beta_sup (sigma^2 from the first 20 rounds; ``_fullT``: from all rounds)
   (iv)  1{predicted variance over the endpoint window > v_50} (pred_total, v_50 of
-        data/outputs/predicted_level/manifest.json; score statistics from the first 20 rounds, persistent part debiased by sigma^2/20;
+        pipeline/early_warning/predicted_level.json; score statistics from the first 20 rounds, persistent part debiased by sigma^2/20;
         ``_fullT``: from all rounds)
 Evaluation sets: all endpoints, and those still diverse at the prediction time (early
 concentrated-round fraction <= 0.5).  AUC: mean +/- s.e. of per-seed AUCs, plus pooled.
@@ -49,7 +49,8 @@ def parse_args():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--h2", default="data/outputs/replay_logspace_grids/early_warning/phase_summary.csv.gz")
     p.add_argument("--oof", default="data/outputs/replay_logspace_adapted/G7_early_warning/oof_predictions_T1.csv.gz")
-    p.add_argument("--j1-manifest", default="data/outputs/predicted_level/manifest.json")
+    p.add_argument("--j1-manifest", default="pipeline/early_warning/predicted_level.json",
+                   help="v_50: the variance at which the median N_eff of p = softmax(z), z_i ~ N(0, v), reaches the concentration threshold (Monte Carlo, 40,000 draws)")
     p.add_argument("--table-cache", default=j.DEFAULT_TABLE_CACHE)
     p.add_argument("--out-dir", default="data/outputs/early_warning_closed_form")
     return p.parse_args()
