@@ -1,31 +1,28 @@
-# How Selection Shapes Diversity in LLM Ecosystems — reproduction package
+# How Selection Shapes Diversity in LLM Ecosystems
 
-Code and data behind every figure and number of the NeurIPS 2026 paper (OpenReview: https://openreview.net/forum?id=RM3k5s1pJM).
+Code and data for the NeurIPS 2026 paper ([OpenReview](https://openreview.net/forum?id=RM3k5s1pJM)).
 
-```
-llm-ecosystem-selection/
-  figures.py             regenerate the figures from data/              python3 figures.py all | fig2 | fig3 | fig4_5_11 | testbeds | online | appendix
-  tables.py              re-derive the quoted numbers from data/        python3 tables.py all | unstable_diversity | evaluator_shift | testbeds | tool | fragility
-  check.py               print every number quoted in the paper next to the file it comes from   python3 check.py [--grep tool]
-  run_all.sh             the three commands above (~2 min)
-  data/                  the analysis outputs the three scripts read; not distributed, regenerated from the raw logs by pipeline/
-  figures/               the PDFs the scripts write (PAPER_DIR=<LaTeX directory> writes into its figures/ instead)
-  pipeline/              how data/ was made from the raw logs: collect -> replay -> early_warning / fragility -> appendix figures (pipeline/README.md)
-  runs/, runs_testbed_*/ raw logs of the main population and of the testbeds (Zenodo: https://doi.org/10.5281/zenodo.23112844)
-```
+## Setup
 
-Setup: Python >= 3.10, `pip install -r requirements.txt` (numpy, pandas, scipy, scikit-learn, matplotlib). The raw logs are on
-Zenodo (https://doi.org/10.5281/zenodo.23112844); `pipeline/README.md` turns them into `data/` (the replay grids take hours on a
-multi-core machine, the early-warning and fragility stages a few hours more; no API access is needed). The three commands above
-then take about two minutes.
-
-## Reproduce
+Python >= 3.10.
 
 ```bash
-pip install -r requirements.txt && bash run_all.sh   # figures/, data/outputs/, and every quoted number (~2 min, needs data/)
+pip install -r requirements.txt
 ```
 
-To rebuild `data/` from the raw logs (Zenodo), follow `pipeline/README.md`.
+## Reproducing the paper
+
+```bash
+bash run_all.sh
+```
+
+This runs the three analysis scripts against the precomputed outputs in `data/` and takes about two minutes:
+
+- `figures.py` writes the paper figures to `figures/`. Run `python3 figures.py all`, or a single target: `fig2`, `fig3`, `fig4_5_11`, `testbeds`, `online`, `appendix`.
+- `tables.py` re-derives the numbers quoted in the paper: `python3 tables.py all`, or one of `unstable_diversity`, `evaluator_shift`, `testbeds`, `tool`, `fragility`.
+- `check.py` prints each quoted number next to the file it comes from. Use `--grep` to filter, e.g. `python3 check.py --grep tool`.
+
+`data/` is not included in the repo. To rebuild it, download the raw logs from [Zenodo](https://doi.org/10.5281/zenodo.23112844) into `runs/` and `runs_testbed_*/`, then follow `pipeline/README.md`. The replay grids take a few hours on a multi-core machine; no API access is needed.
 
 ## Citation
 
@@ -36,6 +33,5 @@ To rebuild `data/` from the raw logs (Zenodo), follow `pipeline/README.md`.
   booktitle = {Advances in Neural Information Processing Systems},
   volume    = {39},
   year      = {2026},
-  url       = {https://openreview.net/forum?id=RM3k5s1pJM}
 }
 ```
