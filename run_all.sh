@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-# Reproduce the paper from the stored analysis outputs in data/.
-#   bash run_all.sh            figures, tables and the number check (~2 min)
-# Recomputing data/ itself from the raw logs is the pipeline (see pipeline/README.md).
 set -euo pipefail
 cd "$(dirname "$0")"
 export MPLBACKEND=Agg
